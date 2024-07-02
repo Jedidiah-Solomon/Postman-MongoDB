@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add Book</title>
+    <link rel="stylesheet" href="/styles/addbook.css" />
+  </head>
+  <body>
+    <h1>Add Book</h1>
+    <form id="addBookForm">
+      <label for="custom_id">Custom ID:</label>
+      <input type="text" id="custom_id" name="custom_id" required />
+
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required />
+
+      <label for="author">Author:</label>
+      <input type="text" id="author" name="author" required />
+
+      <label for="imgUrl">Image URL:</label>
+      <input type="url" id="imgUrl" name="imgUrl" required />
+
+      <label for="publisher">Publisher:</label>
+      <input type="text" id="publisher" name="publisher" required />
+
+      <label for="year">Year:</label>
+      <input type="number" id="year" name="year" required />
+
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" required />
+
+      <label for="genres">Genres (comma-separated):</label>
+      <input type="text" id="genres" name="genres" required />
+
+      <button type="submit">Add Book</button>
+    </form>
+    <script src="/scripts/addbook.js"></script>
+  </body>
+</html>

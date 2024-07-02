@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Check Books</title>
+    <link rel="stylesheet" href="/styles/checkbook.css" />
+  </head>
+  <body>
+    <div>
+      <h1>Search Books to Read</h1>
+      <form id="searchForm">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search by genre, author, year, or ID"
+        />
+        <select id="searchType">
+          <option value="genre">Genre</option>
+          <option value="author">Author</option>
+          <option value="year">Year</option>
+          <option value="custom_id">ID</option>
+        </select>
+        <button type="submit">Search</button>
+      </form>
+      <div id="booksContainer"></div>
+    </div>
+    <script src="/scripts/checkbook.js"></script>
+  </body>
+</html>
