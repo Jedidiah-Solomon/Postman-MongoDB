@@ -13,11 +13,11 @@ This repository is designed for testing the Book Search API using Postman. The s
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/Jedidiah-Solomon/Postman-Tester.git
+git clone https://github.com/Jedidiah-Solomon/Postman-MongoDB.git
 cd Postman-Tester
 ```
 
-#### Get Stock Image
+#### Host Image Free
 
 `https://imgbb.com/`
 
