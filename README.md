@@ -14,7 +14,7 @@ This repository is designed for testing the Book Search API using Postman. The s
 
 ```bash
 git clone https://github.com/Jedidiah-Solomon/Postman-MongoDB.git
-cd Postman-Tester
+cd Postman-MongoDB
 ```
 
 #### Host Image Free
