@@ -1,4 +1,4 @@
-# Postman-Tester :smiley: :clap:
+# Postman-MongoDB :smiley: :clap:
 
 This repository is designed for testing the Book Search API using Postman. The server can be run locally or deployed to Render.
 
