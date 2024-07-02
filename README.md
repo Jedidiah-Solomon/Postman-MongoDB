@@ -23,7 +23,7 @@ cd Postman-MongoDB
 
 ### Render Site
 
-`https://postman-tester.onrender.com/`
+`https://postman-mongodb.onrender.com/`
 
 ### Install Dependencies
 
@@ -42,7 +42,7 @@ Open Postman and use the following endpoints to test the API:
 
 ##### Search by Author
 
-URL: `http://localhost:3000/books/search?author=James Dedon` or `https://postman-tester.onrender.com/books/search?author=James Dedon`
+URL: `http://localhost:3000/books/search?author=James Dedon` or `https://postman-mongodb.onrender.com/books/search?author=James Dedon`
 Method: GET
 
 ##### Search by Genre
