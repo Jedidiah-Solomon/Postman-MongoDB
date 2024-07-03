@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
@@ -33,6 +34,7 @@ const bookSchema = new mongoose.Schema(
         reviewer: { type: String, required: true },
         rating: { type: Number, required: true },
         comment: { type: String, required: true },
+        likes: { type: Number, default: 0 },
       },
     ],
   },
@@ -41,6 +43,8 @@ const bookSchema = new mongoose.Schema(
 
 const Book = mongoose.model("Book", bookSchema);
 
+// Middlewares
+app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -129,6 +133,73 @@ app.get("/books/search", async (req, res) => {
     res.status(200).json(books);
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+});
+
+// POST a new review for a book
+app.post("/books/:id/reviews", async (req, res) => {
+  const { id } = req.params;
+  const { reviewer, rating, comment } = req.body;
+
+  try {
+    const book = await Book.findById(id);
+    if (!book) {
+      return res.status(404).json({ error: "Book not found" });
+    }
+
+    book.reviews.push({ reviewer, rating, comment });
+    await book.save();
+
+    res.status(201).json(book);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+// DELETE a review from a book
+app.delete("/books/:bookId/reviews/:reviewId", async (req, res) => {
+  const { bookId, reviewId } = req.params;
+
+  try {
+    const book = await Book.findById(bookId);
+    if (!book) {
+      return res.status(404).json({ error: "Book not found" });
+    }
+
+    const review = book.reviews.id(reviewId);
+    if (!review) {
+      return res.status(404).json({ error: "Review not found" });
+    }
+
+    book.reviews.pull(reviewId); // Use pull to remove the review by its ID
+    await book.save();
+
+    res.status(200).json({ message: "Review deleted successfully", book });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// POST like a review
+app.post("/books/:bookId/reviews/:reviewId/like", async (req, res) => {
+  const { bookId, reviewId } = req.params;
+
+  try {
+    const book = await Book.findById(bookId);
+    if (!book) {
+      return res.status(404).json({ error: "Book not found" });
+    }
+
+    const review = book.reviews.id(reviewId);
+    if (!review) {
+      return res.status(404).json({ error: "Review not found" });
+    }
+
+    review.likes = (review.likes || 0) + 1;
+    await book.save();
+
+    res.status(200).json(review);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
 });
 

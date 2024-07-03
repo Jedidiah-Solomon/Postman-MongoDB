@@ -127,3 +127,20 @@ License
 This project is licensed under the MIT License.
 
 Feel free to modify this `README.md` file as needed for your specific requirements.
+
+#### Test Review
+
+```
+http://localhost:3000/books/:id/reviews e.g http://localhost:3000/books/6684148a3ded25aca646402a/reviews
+```
+
+```
+{
+  "reviewer": "John Doe",
+  "rating": 5,
+  "comment": "This book was amazing!"
+}
+```
+
+2. Delete `http://localhost:3000/books/:bookId/reviews/:reviewId` e.g
+   `http://localhost:3000/books/668443326d7d77d11bb4a73e/reviews/6685361678fd6e336b855351`
